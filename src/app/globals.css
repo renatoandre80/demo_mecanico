@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Design tokens — dark mode automotivo com destaque laranja neon */
+@theme {
+  --color-ink-950: #07070a;
+  --color-ink-900: #0c0c10;
+  --color-ink-800: #14141a;
+  --color-ink-700: #1d1d25;
+  --color-ink-600: #2a2a35;
+  --color-ink-400: #6b6b7b;
+  --color-ink-300: #9a9aab;
+  --color-ink-100: #e7e7ee;
+
+  --color-accent: #ff6a00;
+  --color-accent-light: #ff8a33;
+  --color-accent-dark: #e05a00;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-montserrat), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --shadow-glow: 0 0 40px -8px rgb(255 106 0 / 0.55);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* compensa a navbar fixa ao navegar por âncoras */
+    scroll-padding-top: 5rem;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-ink-950 text-ink-100 font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-ink-950;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@utility text-gradient {
+  @apply bg-linear-to-r from-accent via-accent-light to-amber-300 bg-clip-text text-transparent;
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
